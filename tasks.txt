@@ -1,0 +1,30 @@
+- now similarly do the question 03 of the assignemnt 04, the image to the question is there in the assingment04 folder in the workspace. Also, go through rules.md after you complete these tasks     
+
+- now similarly do the question 04 of the assignemnt 04, the image to the question is there in the assingment04 folder in the workspace. Also, go through rules.md after you complete these tasks     
+
+- now similarly do the question 05, 06, 07 of the assignemnt 04, the image to the question is there in the assingment04 folder in the workspace. Also, go through rules.md after you complete these tasks.
+
+- Now, lets solve the assingment05 and the questions of which are placed in the assingment05 folder in the workspace. Each questions should be solved using both R and python. The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem01.R and assignment05_problem01.py for question 01 and assignment05_problem02.R and assignment05_problem02.py for question 02 and so on. Also, go through rules.md after you complete the tasks assigned to you.
+
+Now, similarly do the question 02 of the assignemnt05 and the image to the question is there in the assingment05 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem02.R and assignment05_problem02.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+Now, similarly do the question 03 of the assignemnt05 and the image to the question is there in the assingment05 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem03.R and assignment05_problem03.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+Now, similarly do the question 04 of the assignemnt05 and the image to the question is there in the assingment05 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem04.R and assignment05_problem04.py. Also, go through rules.md after you complete these tasks assigned to you.      
+
+Now, similarly do the question 05 of the assignemnt05 and the image to the question is there in the assingment05 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem05.R and assignment05_problem05.py. Also, go through rules.md after you complete these tasks assigned to you.      
+
+Now, similarly do the question 06 of the assignemnt05 and the image to the question is there in the assingment05 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem06.R and assignment05_problem06.py. Also, go through rules.md after you complete these tasks assigned to you.      
+
+Now, similarly do the question 07 of the assignemnt05 and the image to the question is there in the assingment05 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem07.R and assignment05_problem07.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+Now, similarly do the question 01 of the assignemnt06 and the image to the question is there in the assingment06 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment06 folder as assignment06_problem01.R and assignment06_problem01.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+Now, similarly do the question 02 of the assignemnt06 and the image to the question is there in the assingment06 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment06 folder as assignment06_problem02.R and assignment06_problem02.py. Also, go through rules.md after you complete these tasks assigned to you.  
+
+Now, similarly do the question 03 of the assignemnt06 and the image to the question is there in the assingment06 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment06 folder as assignment06_problem03.R and assignment06_problem03.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+
+
+
+
