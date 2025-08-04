@@ -1,246 +1,167 @@
-# Assignment 5 - Problem 2
-# Statistical Analysis Solution in R
+# Assignment 05 - Problem 02
+# Statistics Problem Solution in R
+# Pairwise Hypothesis Tests
+
+cat("Assignment 05 - Problem 02 Solution\n")
+cat("=====================================\n")
 
 # Load required libraries
-library(ggplot2)
-library(dplyr)
+if (!require(stats)) install.packages("stats")
 library(stats)
-library(car)  # for Levene's test
-library(nortest)
-library(tidyr)
 
-# Load the dataset
-tryCatch({
-  # Try to load the databank dataset
-  data <- read.csv('/Users/devvrathans/stats-assignment/data/databank.txt')
-  cat("Dataset loaded successfully\n")
-  cat("Dataset dimensions:", dim(data), "\n")
-  cat("\nFirst few rows:\n")
-  print(head(data))
-}, error = function(e) {
-  cat("Dataset file not found. Creating sample data for demonstration.\n")
-  # Create sample data if file not found
-  set.seed(42)
-  n <- 100
-  data <<- data.frame(
-    age = rnorm(n, 40, 15),
-    weight = rnorm(n, 150, 25),
-    gender = sample(c('M', 'F'), n, replace = TRUE),
-    exercise = sample(0:3, n, replace = TRUE),
-    systolic = rnorm(n, 120, 20)
-  )
-})
+cat("\n", rep("=", 60), "\n")
+cat("ASSIGNMENT 05 - PROBLEM 02 - ACTUAL SOLUTION\n")
+cat(rep("=", 60), "\n")
 
-# Problem 2: Two-sample comparison or ANOVA
-# This could be comparing groups, testing independence, etc.
+cat("Hypothesis tests for pairwise comparisons:\n")
+cat("1. H₀: μ₁ = μ₂, H₁: μ₁ ≠ μ₂\n")
+cat("2. H₀: μ₁ = μ₃, H₁: μ₁ ≠ μ₃\n")
+cat("3. H₀: μ₂ = μ₃, H₁: μ₂ ≠ μ₃\n")
 
-# Example: Comparing systolic blood pressure between genders
-if ("systolic" %in% names(data) && "gender" %in% names(data)) {
-  # Clean data
-  clean_data <- data[complete.cases(data[c("systolic", "gender")]), ]
-  
-  # Separate groups
-  male_systolic <- clean_data$systolic[clean_data$gender == "M"]
-  female_systolic <- clean_data$systolic[clean_data$gender == "F"]
-  
-  cat("\nGroup Statistics:\n")
-  cat("Male group - n:", length(male_systolic), 
-      ", mean:", round(mean(male_systolic), 4), 
-      ", std:", round(sd(male_systolic), 4), "\n")
-  cat("Female group - n:", length(female_systolic), 
-      ", mean:", round(mean(female_systolic), 4), 
-      ", std:", round(sd(female_systolic), 4), "\n")
-  
-  # Perform two-sample t-test (Welch's t-test - assumes unequal variances)
-  t_test_result <- t.test(male_systolic, female_systolic, var.equal = FALSE)
-  
-  cat("\nTwo-sample t-test results:\n")
-  cat("t-statistic:", round(t_test_result$statistic, 4), "\n")
-  cat("p-value:", round(t_test_result$p.value, 4), "\n")
-  cat("95% CI for difference:", round(t_test_result$conf.int, 4), "\n")
-  
-  # Test for equal variances (Levene's test)
-  levene_result <- leveneTest(systolic ~ factor(gender), data = clean_data)
-  cat("\nLevene's test for equal variances:\n")
-  cat("F-statistic:", round(levene_result$`F value`[1], 4), "\n")
-  cat("p-value:", round(levene_result$`Pr(>F)`[1], 4), "\n")
-  
-  # Effect size (Cohen's d)
-  pooled_sd <- sqrt(((length(male_systolic) - 1) * var(male_systolic) + 
-                    (length(female_systolic) - 1) * var(female_systolic)) / 
-                   (length(male_systolic) + length(female_systolic) - 2))
-  cohens_d <- (mean(male_systolic) - mean(female_systolic)) / pooled_sd
-  cat("\nEffect size (Cohen's d):", round(cohens_d, 4), "\n")
-  
-  # Create comprehensive visualization
-  png('/Users/devvrathans/stats-assignment/assignment05/assignment05_problem02_r_output.png', 
-      width = 1500, height = 1000, res = 150)
-  
-  par(mfrow = c(2, 3))
-  
-  # Box plot comparison
-  boxplot(systolic ~ gender, data = clean_data,
-          main = "Box Plot Comparison by Gender",
-          xlab = "Gender", ylab = "Systolic Blood Pressure",
-          col = c("lightblue", "lightpink"))
-  grid()
-  
-  # Histogram comparison
-  hist(male_systolic, breaks = 15, prob = TRUE, 
-       col = rgb(0, 0, 1, 0.5), border = "blue",
-       main = "Distribution Comparison by Gender",
-       xlab = "Systolic Blood Pressure", ylab = "Density",
-       xlim = range(c(male_systolic, female_systolic)))
-  hist(female_systolic, breaks = 15, prob = TRUE, 
-       col = rgb(1, 0, 0, 0.5), border = "red", add = TRUE)
-  legend("topright", legend = c("Male", "Female"), 
-         fill = c(rgb(0, 0, 1, 0.5), rgb(1, 0, 0, 0.5)))
-  grid()
-  
-  # Q-Q plots for normality
-  qqnorm(male_systolic, main = "Q-Q Plot - Male Group")
-  qqline(male_systolic, col = "red", lwd = 2)
-  grid()
-  
-  qqnorm(female_systolic, main = "Q-Q Plot - Female Group")
-  qqline(female_systolic, col = "red", lwd = 2)
-  grid()
-  
-  # Density plots
-  plot(density(male_systolic), col = "blue", lwd = 2, 
-       main = "Density Plot Comparison",
-       xlab = "Systolic Blood Pressure",
-       xlim = range(c(male_systolic, female_systolic)))
-  lines(density(female_systolic), col = "red", lwd = 2)
-  legend("topright", legend = c("Male", "Female"), 
-         col = c("blue", "red"), lwd = 2)
-  grid()
-  
-  # Strip chart with means
-  stripchart(systolic ~ gender, data = clean_data, 
-             method = "jitter", vertical = TRUE,
-             main = "Strip Chart with Means",
-             xlab = "Gender", ylab = "Systolic Blood Pressure",
-             col = c("blue", "red"), pch = 19)
-  
-  # Add mean lines
-  male_mean <- mean(male_systolic)
-  female_mean <- mean(female_systolic)
-  segments(0.8, male_mean, 1.2, male_mean, col = "blue", lwd = 3)
-  segments(1.8, female_mean, 2.2, female_mean, col = "red", lwd = 3)
-  
-  legend("topright", 
-         legend = c(paste("Male mean:", round(male_mean, 2)),
-                   paste("Female mean:", round(female_mean, 2))),
-         col = c("blue", "red"), lwd = 3)
-  grid()
-  
-  dev.off()
-  
-  # Additional normality tests
-  cat("\nNormality Tests:\n")
-  
-  # Shapiro-Wilk tests for normality (if sample size <= 5000)
-  if (length(male_systolic) <= 5000) {
-    shapiro_male <- shapiro.test(male_systolic)
-    cat("Male group - Shapiro-Wilk p-value:", round(shapiro_male$p.value, 4), "\n")
-  }
-  
-  if (length(female_systolic) <= 5000) {
-    shapiro_female <- shapiro.test(female_systolic)
-    cat("Female group - Shapiro-Wilk p-value:", round(shapiro_female$p.value, 4), "\n")
-  }
-  
-  # Anderson-Darling tests
-  ad_male <- ad.test(male_systolic)
-  ad_female <- ad.test(female_systolic)
-  cat("Male group - Anderson-Darling p-value:", round(ad_male$p.value, 4), "\n")
-  cat("Female group - Anderson-Darling p-value:", round(ad_female$p.value, 4), "\n")
-  
-  # Conclusion
-  cat("\nConclusion:\n")
-  alpha <- 0.05
-  if (t_test_result$p.value < alpha) {
-    cat("At α =", alpha, ", we reject the null hypothesis (p-value =", 
-        round(t_test_result$p.value, 4), "<", alpha, ")\n")
-    cat("There is sufficient evidence to conclude that there is a significant difference in systolic blood pressure between males and females\n")
-  } else {
-    cat("At α =", alpha, ", we fail to reject the null hypothesis (p-value =", 
-        round(t_test_result$p.value, 4), "≥", alpha, ")\n")
-    cat("There is insufficient evidence to conclude that there is a significant difference in systolic blood pressure between males and females\n")
-  }
-  
-  # Interpretation of effect size
-  cat("\nEffect Size Interpretation:\n")
-  if (abs(cohens_d) < 0.2) {
-    cat("Small effect size\n")
-  } else if (abs(cohens_d) < 0.5) {
-    cat("Small to medium effect size\n")
-  } else if (abs(cohens_d) < 0.8) {
-    cat("Medium to large effect size\n")
-  } else {
-    cat("Large effect size\n")
-  }
-  
-} else if ("exercise" %in% names(data)) {
-  # Alternative analysis: ANOVA for exercise groups
-  cat("\nAlternative Analysis: ANOVA for Exercise Groups\n")
-  
-  clean_data <- data[complete.cases(data[c("systolic", "exercise")]), ]
-  
-  # Perform one-way ANOVA
-  anova_result <- aov(systolic ~ factor(exercise), data = clean_data)
-  anova_summary <- summary(anova_result)
-  
-  cat("One-way ANOVA results:\n")
-  print(anova_summary)
-  
-  # Group statistics
-  cat("\nGroup Statistics:\n")
-  group_stats <- aggregate(systolic ~ exercise, data = clean_data, 
-                          function(x) c(n = length(x), mean = mean(x), sd = sd(x)))
-  print(group_stats)
-  
-  # Create visualization for ANOVA
-  png('/Users/devvrathans/stats-assignment/assignment05/assignment05_problem02_anova_r_output.png', 
-      width = 1200, height = 800, res = 150)
-  
-  par(mfrow = c(2, 2))
-  
-  # Box plot by exercise level
-  boxplot(systolic ~ exercise, data = clean_data,
-          main = "Systolic BP by Exercise Level",
-          xlab = "Exercise Level", ylab = "Systolic Blood Pressure",
-          col = rainbow(length(unique(clean_data$exercise))))
-  grid()
-  
-  # Means plot
-  means <- tapply(clean_data$systolic, clean_data$exercise, mean)
-  plot(names(means), means, type = "b", pch = 19, 
-       main = "Mean Systolic BP by Exercise Level",
-       xlab = "Exercise Level", ylab = "Mean Systolic BP")
-  grid()
-  
-  # Residuals vs fitted
-  plot(anova_result, which = 1)
-  
-  # Q-Q plot of residuals
-  plot(anova_result, which = 2)
-  
-  dev.off()
-  
-  # Post-hoc tests if significant
-  if (anova_summary[[1]]$`Pr(>F)`[1] < 0.05) {
-    cat("\nPost-hoc pairwise comparisons (Tukey HSD):\n")
-    tukey_result <- TukeyHSD(anova_result)
-    print(tukey_result)
-  }
-  
-} else {
-  cat("Required variables not available in the dataset.\n")
-  cat("Please verify the problem requirements and dataset.\n")
+# Data from Problem 01 (using same data for consistency)
+group1 <- c(4.2, 6.1, 3.4)
+group2 <- c(4.5, 2.7, 2.3, 2.3)
+group3 <- c(1.2, -0.3, 0.4)
+
+cat("\nData from assignment05_problem01:\n")
+cat("Group 1:", group1, sprintf("(n1 = %d)\n", length(group1)))
+cat("Group 2:", group2, sprintf("(n2 = %d)\n", length(group2)))
+cat("Group 3:", group3, sprintf("(n3 = %d)\n", length(group3)))
+
+# Calculate basic statistics
+mean1 <- mean(group1)
+mean2 <- mean(group2)
+mean3 <- mean(group3)
+sd1 <- sd(group1)
+sd2 <- sd(group2)
+sd3 <- sd(group3)
+n1 <- length(group1)
+n2 <- length(group2)
+n3 <- length(group3)
+
+# From Problem 01 ANOVA results
+all_data <- c(group1, group2, group3)
+grand_mean <- mean(all_data)
+total_n <- length(all_data)
+
+# Prepare data for ANOVA
+group_labels <- c(rep("Group1", length(group1)), 
+                  rep("Group2", length(group2)), 
+                  rep("Group3", length(group3)))
+df <- data.frame(values = all_data, groups = as.factor(group_labels))
+
+# Perform ANOVA to get MSE
+anova_result <- aov(values ~ groups, data = df)
+anova_summary <- summary(anova_result)
+
+# Extract MSE and df
+mse <- anova_summary[[1]]$`Mean Sq`[2]  # Mean Square Error (within groups)
+df_within <- anova_summary[[1]]$Df[2]   # Degrees of freedom (within)
+
+cat("\nFrom Problem 01 ANOVA:\n")
+cat("Group 1 mean (μ₁) =", round(mean1, 4), "\n")
+cat("Group 2 mean (μ₂) =", round(mean2, 4), "\n")
+cat("Group 3 mean (μ₃) =", round(mean3, 4), "\n")
+cat("MSE (Mean Square Error) =", round(mse, 4), "\n")
+cat("Degrees of freedom (within) =", df_within, "\n")
+
+alpha <- 0.05
+
+cat("\nPart (a) - Test Statistics for Pairwise Comparisons\n")
+cat(rep("-", 55), "\n")
+
+# Function to calculate t-statistic for two groups with pooled variance
+t_statistic_pooled <- function(mean_i, mean_j, n_i, n_j, mse) {
+  t_stat <- (mean_i - mean_j) / sqrt(mse * (1/n_i + 1/n_j))
+  return(t_stat)
 }
 
-cat("\n", rep("=", 50), "\n", sep="")
-cat("Problem 2 Analysis Complete\n")
-cat(rep("=", 50), "\n", sep="")
+# 1. H₀: μ₁ = μ₂, H₁: μ₁ ≠ μ₂
+t_stat_12 <- t_statistic_pooled(mean1, mean2, n1, n2, mse)
+df_12 <- df_within  # Using df from ANOVA
+p_value_12 <- 2 * pt(abs(t_stat_12), df_12, lower.tail = FALSE)
+
+# 2. H₀: μ₁ = μ₃, H₁: μ₁ ≠ μ₃
+t_stat_13 <- t_statistic_pooled(mean1, mean3, n1, n3, mse)
+df_13 <- df_within  # Using df from ANOVA
+p_value_13 <- 2 * pt(abs(t_stat_13), df_13, lower.tail = FALSE)
+
+# 3. H₀: μ₂ = μ₃, H₁: μ₂ ≠ μ₃
+t_stat_23 <- t_statistic_pooled(mean2, mean3, n2, n3, mse)
+df_23 <- df_within  # Using df from ANOVA
+p_value_23 <- 2 * pt(abs(t_stat_23), df_23, lower.tail = FALSE)
+
+cat("\nTest Statistics for Pairwise Comparisons:\n")
+cat("1. μ₁ vs μ₂: t =", round(t_stat_12, 4), ", df =", df_12, ", p =", round(p_value_12, 4), "\n")
+cat("2. μ₁ vs μ₃: t =", round(t_stat_13, 4), ", df =", df_13, ", p =", round(p_value_13, 4), "\n")
+cat("3. μ₂ vs μ₃: t =", round(t_stat_23, 4), ", df =", df_23, ", p =", round(p_value_23, 4), "\n")
+
+# Critical t-value for alpha = 0.05
+t_critical <- qt(1 - alpha/2, df_within)
+cat("\nCritical t-value (α =", alpha, ", df =", df_within, "):", round(t_critical, 4), "\n")
+
+# Decisions for each hypothesis test
+cat("\nDecisions (without Bonferroni correction):\n")
+cat("1. H₀: μ₁ = μ₂:", ifelse(p_value_12 < alpha, "Reject H₀", "Fail to reject H₀"), "\n")
+cat("2. H₀: μ₁ = μ₃:", ifelse(p_value_13 < alpha, "Reject H₀", "Fail to reject H₀"), "\n")
+cat("3. H₀: μ₂ = μ₃:", ifelse(p_value_23 < alpha, "Reject H₀", "Fail to reject H₀"), "\n")
+
+# With Bonferroni correction
+alpha_bonferroni <- alpha / 3
+cat("\nDecisions (with Bonferroni correction, α =", round(alpha_bonferroni, 4), "):\n")
+cat("1. H₀: μ₁ = μ₂:", ifelse(p_value_12 < alpha_bonferroni, "Reject H₀", "Fail to reject H₀"), "\n")
+cat("2. H₀: μ₁ = μ₃:", ifelse(p_value_13 < alpha_bonferroni, "Reject H₀", "Fail to reject H₀"), "\n")
+cat("3. H₀: μ₂ = μ₃:", ifelse(p_value_23 < alpha_bonferroni, "Reject H₀", "Fail to reject H₀"), "\n")
+
+cat("\nPart (b) - Significant Differences at 3% Significance Level\n")
+cat(rep("-", 60), "\n")
+
+# Using Bonferroni method with 3% significance level
+alpha_b <- 0.03
+alpha_bonferroni_b <- alpha_b / 3  # Bonferroni-adjusted alpha
+cat("Using Bonferroni method with", alpha_b, "significance level\n")
+cat("Adjusted significance level: α =", round(alpha_bonferroni_b, 4), "\n")
+
+# Check which pairs are significantly different
+sig_diff_12 <- p_value_12 < alpha_bonferroni_b
+sig_diff_13 <- p_value_13 < alpha_bonferroni_b
+sig_diff_23 <- p_value_23 < alpha_bonferroni_b
+
+cat("\nWhich pairs of means are significantly different:\n")
+cat("1 and 2:", ifelse(sig_diff_12, "Significant difference", "Not significant"), "(p =", round(p_value_12, 4), ")\n")
+cat("1 and 3:", ifelse(sig_diff_13, "Significant difference", "Not significant"), "(p =", round(p_value_13, 4), ")\n")
+cat("2 and 3:", ifelse(sig_diff_23, "Significant difference", "Not significant"), "(p =", round(p_value_23, 4), ")\n")
+
+# Multiple choice answer determination
+answer <- ""
+if (sig_diff_12 && sig_diff_23 && !sig_diff_13) {
+  answer <- "(A) 1 and 2, 2 and 3 only"
+} else if (sig_diff_12 && sig_diff_13 && !sig_diff_23) {
+  answer <- "(B) 1 and 2, 1 and 3 only"
+} else if (sig_diff_12 && sig_diff_13 && sig_diff_23) {
+  answer <- "(C) all of them"
+} else if (sig_diff_13 && sig_diff_23 && !sig_diff_12) {
+  answer <- "(F) 1 and 3, 2 and 3 only"
+} else if (sig_diff_13 && !sig_diff_12 && !sig_diff_23) {
+  answer <- "(G) 1 and 3 only"
+} else if (sig_diff_12 && !sig_diff_13 && !sig_diff_23) {
+  answer <- "(H) 1 and 2 only"
+} else {
+  answer <- "None of the options match the results"
+}
+
+cat("\nMultiple choice answer:", answer, "\n")
+
+cat("\n", rep("=", 60), "\n")
+cat("FINAL ANSWERS FOR SUBMISSION:\n")
+cat(rep("=", 60), "\n")
+
+cat("Part (a): Test Statistics for Pairwise Comparisons\n")
+cat("1. H₀: μ₁ = μ₂: t =", round(t_stat_12, 4), "\n")
+cat("2. H₀: μ₁ = μ₃: t =", round(t_stat_13, 4), "\n")
+cat("3. H₀: μ₂ = μ₃: t =", round(t_stat_23, 4), "\n")
+
+cat("\nPart (b):", answer, "\n")
+
+cat(rep("=", 60), "\n")
+cat("Note: These results are based on the ANOVA from Problem 01\n")

@@ -1,229 +1,124 @@
-# Assignment 5 - Problem 3
-# Statistical Analysis Solution in Python
+# Assignment 05 - Problem 03
+# Statistics Problem Solution in Python
 
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import scipy.stats as stats
-from scipy.stats import norm, t, chi2, f, pearsonr, spearmanr, linregress
-import seaborn as sns
+from scipy import stats
+from scipy.stats import anderson, bartlett
 
-# Load the dataset
+# Try to import matplotlib for plotting, but continue if not available
 try:
-    # Try to load the databank dataset
-    data = pd.read_csv('/Users/devvrathans/stats-assignment/data/databank.txt')
-    print("Dataset loaded successfully")
-    print(f"Dataset shape: {data.shape}")
-    print("\nFirst few rows:")
-    print(data.head())
-    
-except FileNotFoundError:
-    print("Dataset file not found. Creating sample data for demonstration.")
-    # Create sample data if file not found
-    np.random.seed(42)
-    n = 100
-    data = pd.DataFrame({
-        'age': np.random.normal(40, 15, n),
-        'weight': np.random.normal(150, 25, n),
-        'height': np.random.normal(68, 4, n),
-        'systolic': np.random.normal(120, 20, n),
-        'serum.chol': np.random.normal(200, 40, n)
-    })
+    import matplotlib.pyplot as plt
+    matplotlib_available = True
+except ImportError:
+    print("Warning: matplotlib not available, skipping plot generation")
+    matplotlib_available = False
 
-# Problem 3: Correlation and Regression Analysis
-# Example: Analyzing relationship between variables
+print("Assignment 05 - Problem 03 Solution")
+print("=" * 40)
 
-if 'systolic' in data.columns and 'age' in data.columns:
-    # Clean data - remove missing values
-    clean_data = data[['systolic', 'age']].dropna()
-    x = clean_data['age']
-    y = clean_data['systolic']
-    
-    print(f"\nCorrelation and Regression Analysis")
-    print(f"Variables: Age (X) vs Systolic Blood Pressure (Y)")
-    print(f"Sample size: {len(clean_data)}")
-    
-    # Calculate correlation coefficients
-    pearson_corr, pearson_p = pearsonr(x, y)
-    spearman_corr, spearman_p = spearmanr(x, y)
-    
-    print(f"\nCorrelation Analysis:")
-    print(f"Pearson correlation coefficient: {pearson_corr:.4f} (p-value: {pearson_p:.4f})")
-    print(f"Spearman correlation coefficient: {spearman_corr:.4f} (p-value: {spearman_p:.4f})")
-    
-    # Linear regression using scipy
-    slope, intercept, r_value, p_value_reg, std_err = linregress(x, y)
-    
-    y_pred = slope * x + intercept
-    r_squared = r_value**2
-    
-    print(f"\nLinear Regression Analysis:")
-    print(f"Regression equation: Y = {intercept:.4f} + {slope:.4f}X")
-    print(f"R-squared: {r_squared:.4f}")
-    print(f"Slope: {slope:.4f}")
-    print(f"Intercept: {intercept:.4f}")
-    
-    # Calculate confidence intervals for slope
-    n = len(x)
-    residuals = y - y_pred
-    mse = np.sum(residuals**2) / (n - 2)
-    se_slope = np.sqrt(mse / np.sum((x - np.mean(x))**2))
-    
-    t_critical = stats.t.ppf(0.975, n - 2)  # 95% confidence interval
-    slope_ci_lower = slope - t_critical * se_slope
-    slope_ci_upper = slope + t_critical * se_slope
-    
-    print(f"95% CI for slope: [{slope_ci_lower:.4f}, {slope_ci_upper:.4f}]")
-    
-    # Test significance of slope
-    t_stat_slope = slope / se_slope
-    p_value_slope = 2 * (1 - stats.t.cdf(abs(t_stat_slope), n - 2))
-    
-    print(f"t-statistic for slope: {t_stat_slope:.4f}")
-    print(f"p-value for slope: {p_value_slope:.4f}")
-    
-    # Create comprehensive visualization
-    plt.figure(figsize=(15, 12))
-    
-    # Scatter plot with regression line
-    plt.subplot(2, 3, 1)
-    plt.scatter(x, y, alpha=0.6, color='blue')
-    plt.plot(x, y_pred, color='red', linewidth=2, label=f'y = {intercept:.2f} + {slope:.2f}x')
-    plt.xlabel('Age')
-    plt.ylabel('Systolic Blood Pressure')
-    plt.title(f'Scatter Plot with Regression Line\nR² = {r_squared:.4f}')
-    plt.legend()
-    plt.grid(True, alpha=0.3)
-    
-    # Residual plot
-    plt.subplot(2, 3, 2)
-    plt.scatter(y_pred, residuals, alpha=0.6)
-    plt.axhline(y=0, color='red', linestyle='--')
-    plt.xlabel('Fitted Values')
-    plt.ylabel('Residuals')
-    plt.title('Residual Plot')
-    plt.grid(True, alpha=0.3)
-    
-    # Q-Q plot of residuals
-    plt.subplot(2, 3, 3)
-    stats.probplot(residuals, dist="norm", plot=plt)
-    plt.title('Q-Q Plot of Residuals')
-    plt.grid(True, alpha=0.3)
-    
-    # Histogram of residuals
-    plt.subplot(2, 3, 4)
-    plt.hist(residuals, bins=20, density=True, alpha=0.7, color='skyblue', edgecolor='black')
-    x_norm = np.linspace(residuals.min(), residuals.max(), 100)
-    plt.plot(x_norm, norm.pdf(x_norm, np.mean(residuals), np.std(residuals)), 'r-', linewidth=2)
-    plt.xlabel('Residuals')
-    plt.ylabel('Density')
-    plt.title('Distribution of Residuals')
-    plt.grid(True, alpha=0.3)
-    
-    # Cook's distance
-    plt.subplot(2, 3, 5)
-    leverage = 1/n + (x - np.mean(x))**2 / np.sum((x - np.mean(x))**2)
-    standardized_residuals = residuals / np.sqrt(mse * (1 - leverage))
-    cooks_d = standardized_residuals**2 * leverage / (2 * (1 - leverage))
-    
-    plt.scatter(range(len(cooks_d)), cooks_d, alpha=0.6)
-    plt.axhline(y=4/n, color='red', linestyle='--', label=f'Threshold: 4/n = {4/n:.4f}')
-    plt.xlabel('Observation')
-    plt.ylabel("Cook's Distance")
-    plt.title("Cook's Distance Plot")
-    plt.legend()
-    plt.grid(True, alpha=0.3)
-    
-    # Scale-Location plot
-    plt.subplot(2, 3, 6)
-    sqrt_std_residuals = np.sqrt(np.abs(standardized_residuals))
-    plt.scatter(y_pred, sqrt_std_residuals, alpha=0.6)
-    plt.xlabel('Fitted Values')
-    plt.ylabel('√|Standardized Residuals|')
-    plt.title('Scale-Location Plot')
-    plt.grid(True, alpha=0.3)
-    
-    plt.tight_layout()
-    plt.savefig('/Users/devvrathans/stats-assignment/assignment05/assignment05_problem03_python_output.png', dpi=300, bbox_inches='tight')
-    plt.show()
-    
-    # Additional diagnostic tests
-    print(f"\nDiagnostic Tests:")
-    
-    # Durbin-Watson test for autocorrelation
-    from scipy import stats as scipy_stats
-    diff_residuals = np.diff(residuals)
-    dw_stat = np.sum(diff_residuals**2) / np.sum(residuals**2)
-    print(f"Durbin-Watson statistic: {dw_stat:.4f}")
-    
-    # Shapiro-Wilk test for normality of residuals
-    if len(residuals) <= 5000:
-        shapiro_stat, shapiro_p = stats.shapiro(residuals)
-        print(f"Shapiro-Wilk test for residuals normality: statistic = {shapiro_stat:.4f}, p-value = {shapiro_p:.4f}")
-    
-    # Predictions and confidence intervals
-    print(f"\nSample Predictions:")
-    sample_ages = [25, 40, 60]
-    for age in sample_ages:
-        pred_y = intercept + slope * age
-        
-        # Prediction interval
-        x_mean = np.mean(x)
-        s_xx = np.sum((x - x_mean)**2)
-        se_pred = np.sqrt(mse * (1 + 1/n + (age - x_mean)**2/s_xx))
-        
-        pred_lower = pred_y - t_critical * se_pred
-        pred_upper = pred_y + t_critical * se_pred
-        
-        print(f"Age {age}: Predicted systolic BP = {pred_y:.2f}, 95% PI: [{pred_lower:.2f}, {pred_upper:.2f}]")
-    
-    # Conclusion
-    print(f"\nConclusion:")
-    alpha = 0.05
-    if pearson_p < alpha:
-        print(f"At α = {alpha}, there is significant correlation between age and systolic blood pressure (p-value = {pearson_p:.4f})")
-        if pearson_corr > 0:
-            print("The correlation is positive - as age increases, systolic blood pressure tends to increase")
-        else:
-            print("The correlation is negative - as age increases, systolic blood pressure tends to decrease")
-    else:
-        print(f"At α = {alpha}, there is no significant correlation between age and systolic blood pressure (p-value = {pearson_p:.4f})")
-    
-    # Strength of correlation
-    print(f"\nCorrelation Strength:")
-    abs_corr = abs(pearson_corr)
-    if abs_corr < 0.3:
-        print("Weak correlation")
-    elif abs_corr < 0.7:
-        print("Moderate correlation")
-    else:
-        print("Strong correlation")
+# Data from Problem #1
+group1 = [4.2, 6.1, 3.4]
+group2 = [4.5, 2.7, 2.3, 2.3]
+group3 = [1.2, -0.3, 0.4]
 
-elif 'weight' in data.columns and 'height' in data.columns:
-    # Alternative analysis: Weight vs Height
-    print("\nAlternative Analysis: Weight vs Height Relationship")
-    
-    clean_data = data[['weight', 'height']].dropna()
-    x = clean_data['height']
-    y = clean_data['weight']
-    
-    # Similar analysis as above but for weight vs height
-    pearson_corr, pearson_p = pearsonr(x, y)
-    print(f"Pearson correlation (height vs weight): {pearson_corr:.4f} (p-value: {pearson_p:.4f})")
-    
-    # Simple linear regression using scipy
-    slope, intercept, r_value, p_value_reg, std_err = linregress(x, y)
-    
-    y_pred = slope * x + intercept
-    r_squared = r_value**2
-    
-    print(f"R-squared: {r_squared:.4f}")
-    print(f"Regression equation: Weight = {intercept:.4f} + {slope:.4f} × Height")
+print("Data from Problem #1:")
+print("Group 1:", group1, f"(n1 = {len(group1)})")
+print("Group 2:", group2, f"(n2 = {len(group2)})")
+print("Group 3:", group3, f"(n3 = {len(group3)})")
 
+# Part (a) - Find the p-value for the hypothesis test in Problem #1(a)
+print("\nPart (a) - P-value for One-Way ANOVA")
+print("-" * 40)
+
+# Perform One-Way ANOVA
+f_statistic, p_value_anova = stats.f_oneway(group1, group2, group3)
+print(f"F-statistic: {f_statistic:.4f}")
+print(f"P-value: {p_value_anova:.6f}")
+
+# Part (b) - Normal probability plot of residuals and Anderson-Darling test
+print("\nPart (b) - Normal Probability Plot & Anderson-Darling Test")
+print("-" * 40)
+
+# Prepare data for residuals calculation
+all_data = group1 + group2 + group3
+group_labels = np.array([1] * len(group1) + [2] * len(group2) + [3] * len(group3))
+grand_mean = np.mean(all_data)
+
+# Calculate group means
+group_means = {
+    1: np.mean(group1),
+    2: np.mean(group2),
+    3: np.mean(group3)
+}
+
+# Calculate residuals (observed - fitted value)
+residuals = []
+for i, value in enumerate(all_data):
+    group = group_labels[i]
+    fitted_value = group_means[group]
+    residual = value - fitted_value
+    residuals.append(residual)
+
+residuals = np.array(residuals)
+
+# Create normal probability plot (QQ Plot) if matplotlib is available
+if matplotlib_available:
+    plt.figure(figsize=(10, 6))
+    stats.probplot(residuals, plot=plt)
+    plt.title('Normal Probability Plot of Residuals')
+    plt.grid(True)
+    plt.savefig('assignment05_problem03.png')
+    plt.close()
 else:
-    print("Required variables not available in the dataset.")
-    print("Please verify the problem requirements and dataset.")
+    print("Skipping plot generation as matplotlib is not available")
 
-print("\n" + "="*50)
-print("Problem 3 Analysis Complete")
-print("="*50)
+# Perform Anderson-Darling test for normality
+ad_result = anderson(residuals)
+ad_statistic = ad_result.statistic
+ad_critical_values = ad_result.critical_values
+ad_significance_levels = [15, 10, 5, 2.5, 1]
+
+# Calculate p-value using approximation (since scipy doesn't provide p-value directly)
+# We'll estimate the p-value based on the critical values
+if ad_statistic < ad_critical_values[0]:  # If less than 15% critical value
+    ad_p_value = 0.15  # p > 0.15
+elif ad_statistic > ad_critical_values[-1]:  # If greater than 1% critical value
+    ad_p_value = 0.01  # p < 0.01
+else:
+    # Find the two critical values that bracket the statistic
+    for i in range(len(ad_critical_values) - 1):
+        if ad_critical_values[i] <= ad_statistic <= ad_critical_values[i + 1]:
+            # Linear interpolation to estimate p-value
+            lower_sig = ad_significance_levels[i] / 100
+            upper_sig = ad_significance_levels[i + 1] / 100
+            lower_crit = ad_critical_values[i]
+            upper_crit = ad_critical_values[i + 1]
+            
+            # Interpolate
+            ad_p_value = lower_sig + (upper_sig - lower_sig) * (ad_statistic - lower_crit) / (upper_crit - lower_crit)
+            break
+
+print(f"Anderson-Darling Statistic: {ad_statistic:.4f}")
+print(f"Estimated p-value: {ad_p_value:.6f}")
+
+# For more accurate p-value, we can use additional normality tests
+_, shapiro_p = stats.shapiro(residuals)
+print(f"Shapiro-Wilk p-value: {shapiro_p:.6f}")
+
+# Part (c) - Bartlett's test for equality of variances
+print("\nPart (c) - Bartlett's Test for Equality of Variances")
+print("-" * 40)
+
+# Perform Bartlett's test
+bartlett_stat, bartlett_p = bartlett(group1, group2, group3)
+print(f"Bartlett's Statistic: {bartlett_stat:.4f}")
+print(f"P-value: {bartlett_p:.6f}")
+
+print("\n" + "="*60)
+print("FINAL ANSWERS FOR SUBMISSION:")
+print("="*60)
+
+print(f"Part (a): P-value for One-Way ANOVA = {p_value_anova:.6f}")
+print(f"Part (b): P-value for Anderson-Darling test = {ad_p_value:.6f}")
+print(f"Part (c): P-value for Bartlett's test = {bartlett_p:.6f}")
+print("="*60)

@@ -4,7 +4,7 @@
 
 - now similarly do the question 05, 06, 07 of the assignemnt 04, the image to the question is there in the assingment04 folder in the workspace. Also, go through rules.md after you complete these tasks.
 
-- Now, lets solve the assingment05 and the questions of which are placed in the assingment05 folder in the workspace. Each questions should be solved using both R and python. The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem01.R and assignment05_problem01.py for question 01 and assignment05_problem02.R and assignment05_problem02.py for question 02 and so on. Also, go through rules.md after you complete the tasks assigned to you.
+Now, lets solve the question01 of assingment05 and the questions of which are placed in the assingment05 folder in the workspace. Each questions should be solved using both R and python. The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem01.R and assignment05_problem01.py for question 01. Also, go through rules.md after you complete the tasks assigned to you.
 
 Now, similarly do the question 02 of the assignemnt05 and the image to the question is there in the assingment05 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem02.R and assignment05_problem02.py. Also, go through rules.md after you complete these tasks assigned to you.
 
@@ -24,7 +24,381 @@ Now, similarly do the question 02 of the assignemnt06 and the image to the quest
 
 Now, similarly do the question 03 of the assignemnt06 and the image to the question is there in the assingment06 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment06 folder as assignment06_problem03.R and assignment06_problem03.py. Also, go through rules.md after you complete these tasks assigned to you.
 
+assingment05 questions 01 is not solved properly, give me all the answers of that question. YOu can have the question image in the assingment05 folder in the workspace. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem01.R and assignment05_problem01.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+for assingment05, poroblem01, use only the dataset provied in the question image and not the one present in the data folder. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem01.R and assignment05_problem01.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+quesiton 01 in the assignment05(questions is given in the png in the assingment05 folder), there are three questions to be solved. The options of the a and c part are given. Give me the final answers which i can submit. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem01.R and assignment05_problem01.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+The data for the question 01 in the assignment05(questions is given in the png in the assingment05 folder), is given as assignment05_problem01_data.png. The options of the a and c part are given. Give me the final answers which i can submit. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem01.R and assignment05_problem01.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+The data for the question 01 in the assignment05(questions is given in the png in the assingment05 folder), 
+Group 1 Group 2 Group 3
+4.2 4.5 1.2
+6.1 2.7 −0.3
+3.4 2.3 0.4
+    2.3
+here group 1 has 3 values, group 2 has 4 values and group 3 has 3 value. Give me the final answers which i can submit. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem01.R and assignment05_problem01.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+question 01 in assingment 05 (b)Find the values of SS(treatment) and SS(error). wher is the anser of this? Also go through rules.md after you complete these tasks assigned to you.
+
+These are the options for the b part of question 01 in assignment 05: (A) Reject H0 since 8.4065 > 6.5415. (B) Reject H0 since 8.4065 > 4.7374.
+(C) Reject H0 since 12.6097 > 6.5415. (D) Reject H0 since 11.0335 > 6.5415.
+(E) Do not reject H0 since 3.1524 ≤ 6.5415. (F) Reject H0 since 12.6097 > 4.7374.
+(G) Reject H0 since 11.0335 > 4.7374. (H) Do not reject H0 since 3.1524 ≤ 4.7374.
+
+Now based on the answers from question 01 of assingment05 and the questions02 in the image of the assingment05 folder, give me the final answers to the question 02 which i can submit. The question should be solved using both R and python.The accuracy of the results matter the most. Save the file in the assingment05 folder as assignment05_problem02.R and assignment05_problem02.py. Also, go through rules.md after you complete these tasks assigned to you.
+
+Can't you properly read what is written in assignment05_problem02? have u lost ur ocr capabilities? first properly read what the quesion is aksing, what are the options and then solve the question. Give me the final answers in the end so thaat i can submit them. Also go through rules.md after you complete these tasks assigned to you.  
+
+solve the assingment05, problem02 part (a) H0 : μ1 = μ2 H0 : μ1 = μ3 H0 : μ2 = μ3 H1 : μ1 ≠ μ2
+H1 : μ1 ≠ μ3
+H1 : μ2 ≠ μ3
+(a) Find the value of the test statistic for each of the above three hypotheses (in the above order).
+
+Now, solve part assingment05 problem02 (b) Which pairs of means are significantly different (using the Bonferonni method at the 3% significance level)?
+(A) 1 and 2, 2 and 3 only (B) 1 and 2, 1 and 3 only (C) all of them (F) 1 and 3, 2 and 3 only (G) 1 and 3 only (H) 1 and 2 only
+
+Also, go through rules.md after you complete these tasks assigned to you.
+
+Now, solve the assignemnt05 problem03, do the following using the data from Problem #1 above.
+(a) Find the p-value for the hypothesis test in Problem #1(a) above.
+(b) Construct a normal probability plot of the residuals and find the p-value for the Anderson-Darling test. Enter
+the p-value into the answer box.
+(c) Find the p-value for the hypothesis test of equality of population variances (using Bartlett's test).
+Also, go through rules.md after you complete these tasks assigned to you.
+
+Now, solve the assignemnt05 problem04, do the following using the data from Problem #1 above.
+Consider the data set that is summarized in the R Output below.
+Df Sum Sq Mean Sq F Value Pr(>F)
+C2 2 33.27 16.634 3.85 0.0312 *
+Residuals 34 146.99 4.323
+---
+Signif. codes: 0 "˜ ***' 0.001 "˜ **' 0.01 "˜ *' 0.05 "˜ .' 0.1 "˜ ' 1
+sample n mean sd
+1 12 11.69 2.4081
+2 14 ? 1.8991
+3 11 9.71 1.9058
+Pairwise comparisons using t tests with pooled SD
+data: C2 and sample
+1 2
+2 0.050 -
+3 0.086 1.000
+P value adjustment method: bonferroni
+(a) Find a 94% Bonferonni confidence interval for μ3 − μ1.
+(b) Which pairs of means are significantly different, using the Bonferonni method at the 6% significance level?
+(A) 1 and 3 only (B) 1 and 2, 1 and 3 only (C) 2 and 3 only (D) 1 and 3, 2 and 3 only (F) 1 and 2, 2 and 3 only (G) all of them (H) none of them
+(E) 1 and 2 only
+Also, go through rules.md after you complete these tasks assigned to you.
+
+Now, solve the assignemnt05 problem05, do the following using the data from Problem #1 above.
+Given the following five pairs of (x, y) values,
+x 2 5 9 8 14
+y 9 7 6 4 0
+(a) Determine the least squares regression line.
+(Be sure to save your unrounded values of b0 and b1 for use in Problem #6 below.)
+(b) Draw the least squares regression line accurately on a scatterplot. Then look to see which (x, y) pairs are
+above the regression line. Then add up the y-values for all of the (x, y) pairs that fall above the regression
+line.
+https://www.childsmath.ca/childsa/forms/2bsStuff/onlineform
+_
+2.php?assign=5 3/6
+7/28/25, 11:46 PM Stats 2B03 Su25 Assignment #5 Answer Sheet for User: kumaa25
+For example, if you draw your least squares regression line accurately on a scatterplot, and you find that the
+first two (x, y) pairs [i.e., (2, 9) and (5, 7)] are above the regression line, then since the sum of the two
+corresponding y-values is 9 + 7 = 16, you would enter 16 into the answer box.
+Problem #5(a):
+enter the values of b0 and b1 (in that order), separated by a comma
+(numbers correct to 4 decimals)
+Problem #5(b): sum of y-values for points above
+the regression line
+Also, go through rules.md after you complete these tasks assigned to you.
+
+For problem05 assingment05, what is the value of b0 and b1? The values should be correct to 4 decimal places. Also, go through rules.md after you complete these tasks assigned to you.
+
+For problem05 assingment05, what is the sum of y-values for points above the regression line? The values should be correct to 4 decimal places. Also, go through rules.md after you complete these tasks assigned to you.
+
+
+Problem #6: Referring to Problem #5 above,
+(a) Calculate the residuals.
+(b) Calculate the residual sum of squares SS(error).
+(c) Find the value of the test statistic for testing the hypothesis
+H0 : ρ = 0 H1 : ρ ≠ 0
+(d) Find the 1% critical value for the hypothesis test in (c).
+(e) Work through this example on R and then find the p-value for the hypothesis test in (c).
+Problem #6(a): Problem #6(b): residuals, separated by commas
+(numbers correct to 4 decimals)
+SS(error) (correct to 4 decimals)
+Problem #6(c): test statistic (correct to 2 decimals)
+Problem #6(d): critical value (correct to 3 decimals)
+Problem #6(e): p-value
+Also, go through rules.md after you complete these tasks assigned to you.
+
+NOw, lets do the problem07 of the assignment05:
+For this problem and Problem #8 below you are going to use a personalized databank data set. To create
+this dataset and import it into R, do the following:
+1. Your personalized databank data set is kumaa25_databank(in teh data folder in the workspace). Click on the preceding link and save the file as a text file. The
+name of the text file should be of the form MacID_databank.txt. where 'MacID' is your MacID.
+2. By following the instructions in the introductory lab, Import the the data into R into an object called
+databank2
+https://www.childsmath.ca/childsa/forms/2bsStuff/onlineform
+_
+2.php?assign=5 4/6
+7/28/25, 11:46 PM Stats 2B03 Su25 Assignment #5 Answer Sheet for User: kumaa25
+3. Verify (using sum command) that the sum of the age column is equal to 3004, the sum of the weight
+column is equal to 11878, and the sum of the IQ column is equal to 8817.
+(a) Work through this example on R. When working through this example, you should be using the original
+databank.RData project that you created in Assignment #0.
+Now, using your personalized databank project kumaa25_databank.RData that you just created above,
+fit the regression model y = β0 + β1 x1 + β2 x2 where x1 = weight, x2 = age, and
+y = systolic blood pressure (systolic). Then enter the values of the least squares estimates of β0, β1, and
+β2 into the answer box, separated by commas.
+(b) Using your personalized databank project kumaa25_databank.RData that you just created above, find
+the p-value for the test to see if the variable x6 = IQ can be added to the model which already contains
+x1 = weight and x2 = age. i.e., fit the model y = β0 + β1 x1 + β2 x2 + β6 x6 and find the p-value for testing
+the hypothesis H0 : β6 = 0 vs H1 : β6 ≠ 0.
+(c) Should x6 = IQ be included in the model which already contains
+x1 = weight and x2 = age? Use α = 0.1.
+Problem #7(a): b0, b1, b2
+Problem #7(b): p-value
+(A) Yes, because the p-value in (b) is less than 0.1. (B) Yes, because the p-value in (b) is greater than 0.1.
+(C) No, because the p-value in (b) is less than 0.1. (D) No, because the p-value in (b) is greater than 0.1.
+(E) Yes, because the estimated value of β6 is greater than.0.1, in absolute value.
+(F) Yes, because the estimated value of β6 is not equal to zero.
+(G) No, because the estimated value of β6 is greater than.0.1, in absolute value.
+(H) No, because the estimated value of β6 is not equal to zero.
+Problem #7(c): Select Should x6 be included?
+Also, go through rules.md after you complete these tasks assigned to you.
+
+Answer these parts for problem07 of assignment05:
+Problem #7(a): b0, b1, b2
+Problem #7(b): p-value
+(A) Yes, because the p-value in (b) is less than 0.1. (B) Yes, because the p-value in (b) is greater than 0.1.
+(C) No, because the p-value in (b) is less than 0.1. (D) No, because the p-value in (b) is greater than 0.1.
+(E) Yes, because the estimated value of β6 is greater than.0.1, in absolute value.
+(F) Yes, because the estimated value of β6 is not equal to zero.
+(G) No, because the estimated value of β6 is greater than.0.1, in absolute value.
+(H) No, because the estimated value of β6 is not equal to zero.
+Problem #7(c): Select Should x6 be included?
+Also, go through rules.md after you complete these tasks assigned to you.
+
+
+Now, lets do the problem08 of the assignment05:
+Use your personalized databank project kumaa25_databank.RData (that you created at the beginning
+of Problem #7 above) for all parts of this problem.
+First verify (using the table command) that the frequency distribution for the marital.status variable is
+as follows.
+marital
+D M S W
+14 41 18 7
+(a) Consider following indicator variable:
+x = {1 if marital.status = M
+0 if marital.status = S, W, or D
+https://www.childsmath.ca/childsa/forms/2bsStuff/onlineform
+_
+2.php?assign=5 5/6
+7/28/25, 11:46 PM Stats 2B03 Su25 Assignment #5 Answer Sheet for User: kumaa25
+What are the first 3 values of the variable x?
+(b) Use R to create dummy (indicator) variables x7, x8, and x9 for the variable marital.status.
+(Note: You might have to use quotes like =="D", for example, to get this to work.)
+Then fit the model y = β0 + β1 x1 + β2 x2 + β7 x7 + β8 x8 + β9 x9
+(where y = systolic, x1 = weight, x2 = age).
+Find the F-value for the hypothesis test
+H0 : β7 = β8 = β9 = 0 vs H1 : at least one of β7, β8, β9 ≠ 0.
+(c) Find the 5% critical value for the hypothesis test in (b).
+(d) Should marital.status be included in the model to predict systolic blood pressure (systolic), using
+α = .05?
+Problem #8(a): first 3 values of x, separated by commas
+Problem #8(b): F-value (correct to 3 decimals)
+Problem #8(c): critical value (correct to 4 decimals)
+(A) Yes, because the answer in (b) is greater than the answer in (c).
+(B) No, because the answer in (b) is greater than the answer in (c).
+(C) Yes, because the answer in (b) is less than or equal to the answer in (c).
+(D) No, because the answer in (b) is less than or equal to the answer in (c).
+(E) No, because the 3 p-values corresponding to the variables x7, x8, and x9, are all greater than 0.05.
+(F) No, because one of the 3 p-values corresponding to the variables x7, x8, and x9, is less than 0.05.
+(G) Yes, because the 3 p-values corresponding to the variables x7, x8, and x9, are all greater than 0.05.
+Problem #8(d): Select Should marital.status be included?
+
+Also, go through rules.md after you complete these tasks assigned to you.
+
+
+Answer these parts for problem08 of assignment05:
+Problem #8(a): first 3 values of x, separated by commas
+Problem #8(b): F-value (correct to 3 decimals)
+Problem #8(c): critical value (correct to 4 decimals)
+(A) Yes, because the answer in (b) is greater than the answer in (c).
+(B) No, because the answer in (b) is greater than the answer in (c).
+(C) Yes, because the answer in (b) is less than or equal to the answer in (c).
+(D) No, because the answer in (b) is less than or equal to the answer in (c).
+(E) No, because the 3 p-values corresponding to the variables x7, x8, and x9, are all greater than 0.05.
+(F) No, because one of the 3 p-values corresponding to the variables x7, x8, and x9, is less than 0.05.
+(G) Yes, because the 3 p-values corresponding to the variables x7, x8, and x9, are all greater than 0.05.
+Problem #8(d): Select Should marital.status be included?
+Also, go through rules.md after you complete these tasks assigned to you.
+
+Now, lets do the problem01 of the assignment06:
+Geneticists examined the distribution of seed coat color in cultivated amaranth grains, Amaranthus caudatus.
+Crossing black-seeded and pale-seeded A. caudatus populations gave the following counts of black, brown, and
+pale seeds in the second generation.
+Seed Coat Color black brown pale
+Seed Count 342 83 37
+According to genetics laws, dominant epistasis should lead to 12
+16 of all such seeds being black, 3
+16 brown, and
+1
+16 pale. We want to test this theory at the 1% significance level.
+(a) Find the value of the test statistic.
+(b) Fiind the critical value.
+(c) What is the conclusion?
+Problem #1(a): Problem #1(b): test statistic (correct to 3 decimals)
+critical value (correct to 3 decimals)
+(A) We conclude that the data is consistent with the theory since
+the answer in (a) is greater than the answer in (b).
+(B) We conclude that the observed frequencies contradict the theory
+since the answer in (a) is less than or equal to the answer in (b).
+(C) We cannot conclude that the observed frequencies contradict the theory
+since the answer is (a) is greater than the answer in (b).
+(D) We conclude that the theory is true since the answer in (a)
+is greater than the answer in (b).
+(E) We conclude that the observed frequencies contradict the theory
+since the answer in (a) is bigger than the answer in (b).
+(F) We conclude that the theory is true since the answer in (a)
+is less than or equal to the answer in (b).
+(G) We cannot conclude that the observed frequencies contradict the theory
+since the answer in (a) is less than or equal to the answer in (b).
+Also, go through rules.md after you complete these tasks assigned to you.
+
+Answer these parts for problem01 of assignment06:
+Problem #1(a): Problem #1(b): test statistic (correct to 3 decimals)
+critical value (correct to 3 decimals)
+(A) We conclude that the data is consistent with the theory since
+the answer in (a) is greater than the answer in (b).
+(B) We conclude that the observed frequencies contradict the theory
+since the answer in (a) is less than or equal to the answer in (b).
+(C) We cannot conclude that the observed frequencies contradict the theory
+since the answer is (a) is greater than the answer in (b).
+(D) We conclude that the theory is true since the answer in (a)
+is greater than the answer in (b).
+(E) We conclude that the observed frequencies contradict the theory
+since the answer in (a) is bigger than the answer in (b).
+(F) We conclude that the theory is true since the answer in (a)
+is less than or equal to the answer in (b).
+(G) We cannot conclude that the observed frequencies contradict the theory
+since the answer in (a) is less than or equal to the answer in (b).
+Problem #1(c): Select conclusion
+Also, go through rules.md after you complete these tasks assigned to you.
+
+Now, lets do the problem02 of the assignment06:
+Data from adoption studies on handedness indicate that the effects of shared biological heritage are more
+powerful determinants of hand preference than sociocultural factors. Biological offspring were found to show
+nonrandom distributions of right and non-right handedness as a function of parental handedness. In contrast, the
+handedness distribution of adopted children as a function of parental handedness was essentially random. The
+following table gives the handedness of biological offspring as a function of parental handedness.
+Biological Offspring
+Parental Handedness
+(father × mother) Right-Handed Left-Handed
+Right × Right 290 37
+Right × Left 29 8
+Left × Right 30 6
+Problem #2(a): (a) Find the values in cells (2,2) and (3,2) of the expected table.
+(b) Can a chi-square analysis be performed on the above table?
+(c) Combine the last two rows in the above table to create a new 2 × 2 table. (The meaning of the 2nd row in this
+new table would be "at least one of the parents is left-handed".)
+If we use the resulting 2 × 2 table to test the hypothesis that the handedness of the biological offspring is
+independent of the handedness of the parents using the 5% significance level, what is the value of the test
+statistic?
+(d) Find the critical value for the test in (c).
+(e) What is the conclusion?
+Also, go through rules.md after you complete these tasks assigned to you.
 
 
 
+Answer these parts for problem02 of assignment06:
+Problem #2(a): Expected values (correct to 3 decimals)
+separate your answers with a comma
+(A) No, because the population is not normal. (B) Yes, because all of the observed frequencies are at least 5.
+(C) No, because at least one of the observed frequencies is less than 5.
+(D) Yes, because at least one of the observed frequencies is less than 5.
+(E) Yes, because only some of the expected frequencies are less than 5.
+(F) Yes, because at least one of the expected frequencies is less than 5.
+(G) No, because at least one of the expected frequencies is less than 5.
+Problem #2(b): Select
+Problem #2(c): Problem #2(d): test statistic (correct to 2 decimals)
+critical value (correct to 3 decimals)
+(A) Do not reject the hypothesis of independence since
+the answer in (c) is greater than or equal to the answer in (d)
+(B) Reject the hypothesis of independence since
+the answer in (c) is greater than the answer in (d)
+(C) We conclude that the factors are independent since
+the answer in (c) is greater than the answer in (d)
+(D) We conclude that the factors are dependent since
+the answer in (c) is less than or equal to the answer in (d)
+(E) Reject the hypothesis of independence since
+the answer in (c) is less than or equal to the answer in (d)
+(F) We conclude that the factors are independent since
+the answer in (c) is less than or equal to the answer in (d)
+(G) Do not reject the hypothesis of independence since
+the answer in (c) is less than or equal to the answer in (d)
+Problem #2(e): Select conclusion
 
+
+Answer these parts for problem02 of assignment06:
+Problem #2(a):expected values (correct to 3 decimals)
+separate your answers with a comma
+(A) No, because the population is not normal. (B) Yes, because all of the observed frequencies are at least 5.
+(C) No, because at least one of the observed frequencies is less than 5.
+(D) Yes, because at least one of the observed frequencies is less than 5.
+(E) Yes, because only some of the expected frequencies are less than 5.
+(F) Yes, because at least one of the expected frequencies is less than 5.
+(G) No, because at least one of the expected frequencies is less than 5.
+Problem #2(b): Select
+Problem #2(c): Problem #2(d): test statistic (correct to 2 decimals)
+critical value (correct to 3 decimals)
+Also, go through rules.md after you complete these tasks assigned to you.
+
+
+Answer the following options for problem02 of assignment06:
+Problem #2(e): Select conclusion
+(A) Do not reject the hypothesis of independence since
+the answer in (c) is greater than or equal to the answer in (d)
+(B) Reject the hypothesis of independence since
+the answer in (c) is greater than the answer in (d)
+(C) We conclude that the factors are independent since
+the answer in (c) is greater than the answer in (d)
+(D) We conclude that the factors are dependent since
+the answer in (c) is less than or equal to the answer in (d)
+(E) Reject the hypothesis of independence since
+the answer in (c) is less than or equal to the answer in (d)
+(F) We conclude that the factors are independent since
+the answer in (c) is less than or equal to the answer in (d)
+(G) Do not reject the hypothesis of independence since
+the answer in (c) is less than or equal to the answer in (d)
+
+
+Now, lets do the problem03 of the assignment06:
+A high-risk group of 784 male volunteers was included in a major clinical trial for testing a new vaccine for type
+B hepatitis. The vaccine was given to 430 persons randomly selected from the group, and the others were
+injected with a neutral substance (placebo). 8 of the vaccinated people and 31 of the nonvaccinated ones later got
+the disease.
+We wish to test the hypothesis that the probability of getting type B hepatitis is different (higher or lower) for
+people who were vaccinated compared with people who were not, using the 10% significance level.
+(a) If we use the contingency table method to test this hypothesis, find the 4 values in the expected table.
+(b) Find the value of the test statistic (using the contingency table method).
+(c) Find the critical value (using the contingency table method).
+(d) Using the z-test for proportions, find the value of the test statistic (and verify that z 2 2
+= χ , when there is one
+degree of freedom).
+(e) Find the p-value.
+Also, go through rules.md after you complete these tasks assigned to you.
+
+Answer these parts for problem03 of assignment06:
+Problem #3(a):
+Problem #3(b): Separate your answers with a comma.
+The order doesn't matter.
+Answers correct to 4 decimals.
+test statistic (correct to 3 decimals)
+Problem #3(c): critical value (correct to 3 decimals)
+Problem #3(d): answer correct to 2 decimals
+Problem #3(e): p-value (correct to 4 decimals)
+Also, go through rules.md after you complete these tasks assigned to you.
